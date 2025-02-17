@@ -19,22 +19,23 @@ Mengze Li<sup>4</sup>, Xiaohui Song<sup>1</sup>, Siliang Tang<sup>1</sup>, Jun X
 </div>
 
 
-## Overview
+## 🌟 Overview
+Welcome to **HealthGPT!** 🚀
 **HealthGPT** is an advanced medical Large Vision-Language Model with a unified framework that integrates both medical visual comprehension and generation capabilities. In this project, a **heterogeneous low rank adaptation (H-LoRA)** and a **three-stage learning strategy** are proposed, enabling the pre-trained large language model to efficiently follow both visual comprehension and generation instructions.
 
-### Task Classification and Support
+### 📚 Task Classification and Support
 **HealthGPT** supports **7** types of medical comprehension tasks and **5** types of medical generation tasks, outperforming recent unified visual models and medical-specific models.
 <p align="center">
   <img src="images/intro.png" alt="Example Image" style="width:97%;">
 </p>
 
-### Architecture
+### 🏗️ Architecture
 The HealthGPT architecture integrates **hierarchical visual perception** and **H-LoRA**, employing a task-specific hard router to select visual features and H-LoRA plugins, generating text and vision outputs with an autoregressive manner.
 <p align="center">
   <img src="images/Framework.png" alt="Example Image" style="width:88%;">
 </p>
 
-## Getting Started
+## 🛠️ Getting Started
 We have released our model in two configurations, **HealthGPT-M3** and **HealthGPT-L14**, to suit different requirements and resource availability:
 - HealthGPT-M3: A smaller version optimized for speed and reduced memory usage.
 - HealthGPT-L14: A larger version designed for higher Performance and more complex tasks.
@@ -76,7 +77,7 @@ HealthGPT enhances the base model's capabilities for medical visual comprehensio
 
 We will soon be releasing the full weights for HealthGPT-L14, along with the H-LoRA weights for medical generation tasks. Stay tuned!!!
 
-## Inference
+## ⚡ Inference
 ### Medical Visual Question Answering
 
 To perform inference using HealthGPT, please follow these steps:
@@ -128,14 +129,13 @@ python3 com_infer_phi4.py \
     --vq_idx_nums "8192" \
     --instruct_template "phi4_instruct" \
     --vit_path "openai/clip-vit-large-patch14-336/" \
-    --hlora_path "path/to/your/local/com_hlora_weights.bin" \
-    --fusion_layer_path "path/to/your/local/fusion_layer_weights.bin" \
+    --hlora_path "path/to/your/local/com_hlora_weights_phi4.bin" \
     --question "Your question" \
     --img_path "path/to/image.jpg"
 ```
-We are about to update the corresponding weights.
+The weights of `com_hlora_weights_phi4.bin` can be downloaded [here](https://huggingface.co/lintw/HealthGPT-L14).
 
-### Image Reconstructionß
+### Image Reconstruction
 Similarly, simply set the `HLORA_PATH` to point to the [`gen_hlora_weights.bin`](https://huggingface.co/lintw/HealthGPT-M3/blob/main/gen_hlora_weights.bin) file and configure the other model paths. Then, you can perform the image reconstruction task using the following script:
 ```
 cd llava/demo
@@ -162,7 +162,7 @@ python3 gen_infer.py \
 ```
 
 
-## Citation
+## 🔗 Citation
 If you found this work useful, please consider giving this repository a star and citing our paper as followed:
 ```
 @misc{lin2025healthgptmedicallargevisionlanguage,
@@ -176,11 +176,11 @@ If you found this work useful, please consider giving this repository a star and
 }
 ```
 
-## Acknowledgment
+## 🤝 Acknowledgment
 Our project is developed based on the following repositories:
 - [LLaVA](https://github.com/haotian-liu/LLaVA): Large Language and Vision Assistant
 - [LLaVA++](https://github.com/mbzuai-oryx/LLaVA-pp): Extending Visual Capabilities with LLaMA-3 and Phi-3
 - [Taming Transformers](https://github.com/CompVis/taming-transformers): Taming Transformers for High-Resolution Image Synthesis
 
-## License
+## ⚖️ License
 This repository is under [Apache License 2.0](LICENSE).
