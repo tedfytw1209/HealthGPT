@@ -15,7 +15,7 @@ Mengze Li<sup>4</sup>, Xiaohui Song<sup>1</sup>, Siliang Tang<sup>1</sup>, Jun X
 <sup>4</sup>The Hong Kong University of Science and Technology,
 <sup>5</sup>National University of Singapore
 
-<a href='https://arxiv.org/abs/2502.09838'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a> 
+<a href='https://arxiv.org/abs/2502.09838'><img src='https://img.shields.io/badge/Paper-Arxiv-red'> <a href='https://huggingface.co/lintw/HealthGPT-M3'><img src='https://img.shields.io/badge/Model-Huggingface-yellow'></a> 
 </div>
 
 
@@ -110,12 +110,30 @@ python3 com_infer.py \
     --vit_path "openai/clip-vit-large-patch14-336/" \
     --hlora_path "path/to/your/local/com_hlora_weights.bin" \
     --fusion_layer_path "path/to/your/local/fusion_layer_weights.bin" \
-    --question "Describe the image." \
+    --question "Your question" \
     --img_path "path/to/image.jpg"
 
 ```
 
 - Customize the Question and Image: You can modify the `--question` and `--img_path` parameters to ask different questions or analyze different images.
+
+Correspondingly, the visual Question Answering task of `HealthGPT-L14` can be executed with the following Python command:
+```
+python3 com_infer_phi4.py \
+    --model_name_or_path "microsoft/Phi-4" \
+    --dtype "FP16" \
+    --hlora_r "32" \
+    --hlora_alpha "64" \
+    --hlora_nums "4" \
+    --vq_idx_nums "8192" \
+    --instruct_template "phi4_instruct" \
+    --vit_path "openai/clip-vit-large-patch14-336/" \
+    --hlora_path "path/to/your/local/com_hlora_weights.bin" \
+    --fusion_layer_path "path/to/your/local/fusion_layer_weights.bin" \
+    --question "Your question" \
+    --img_path "path/to/image.jpg"
+```
+We are about to update the corresponding weights.
 
 ### Image Reconstruction
 Similarly, simply set the `HLORA_PATH` to point to the [`gen_hlora_weights.bin`](https://huggingface.co/lintw/HealthGPT-M3/blob/main/gen_hlora_weights.bin) file and configure the other model paths. Then, you can perform the image reconstruction task using the following script:
