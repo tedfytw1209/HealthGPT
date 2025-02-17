@@ -16,5 +16,5 @@ python3 com_infer.py \
     --vit_path "$VIT_PATH" \
     --hlora_path "$HLORA_PATH" \
     --fusion_layer_path "$FUSION_LAYER_PATH" \
-    --question "Describe the image." \
+    --question "Your question" \
     --img_path "path/to/image.jpg" \

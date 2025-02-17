@@ -380,6 +380,17 @@ conv_phi3_instruct = Conversation(
     sep="<|end|>",
 )
 
+
+conv_phi4_instruct = Conversation(
+    system="""<|im_start|>system<|im_sep|>\nYou are a medieval knight and must provide explanations to modern people.""",
+    roles=("\n<|im_start|>user<|im_sep|>\n", "\n<|im_start|>assistant<|im_sep|>\n"),
+    version="phi4",
+    messages=(),
+    offset=0,
+    sep_style=SeparatorStyle.MPT,
+    sep="<|im_end|>",
+)
+
 default_conversation = conv_vicuna_v1
 conv_templates = {
     "default": conv_vicuna_v0,
@@ -399,7 +410,7 @@ conv_templates = {
     "v1_mmtag": conv_llava_v1_mmtag,
     "llava_llama_2": conv_llava_llama_2,
     "phi3_instruct": conv_phi3_instruct,
-
+    "phi4_instruct": conv_phi4_instruct,
     "mpt": conv_mpt,
 }
 

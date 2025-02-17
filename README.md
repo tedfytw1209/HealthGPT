@@ -135,7 +135,7 @@ python3 com_infer_phi4.py \
 ```
 We are about to update the corresponding weights.
 
-### Image Reconstruction
+### Image Reconstructionß
 Similarly, simply set the `HLORA_PATH` to point to the [`gen_hlora_weights.bin`](https://huggingface.co/lintw/HealthGPT-M3/blob/main/gen_hlora_weights.bin) file and configure the other model paths. Then, you can perform the image reconstruction task using the following script:
 ```
 cd llava/demo
@@ -144,7 +144,7 @@ bash gen_infer.sh
 
 You can also directly execute the following python command:
 ```
-python3 com_infer.py \
+python3 gen_infer.py \
     --model_name_or_path "microsoft/Phi-3-mini-4k-instruct" \
     --dtype "FP16" \
     --hlora_r "256" \
