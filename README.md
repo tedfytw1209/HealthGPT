@@ -15,7 +15,7 @@ Mengze Li<sup>4</sup>, Xiaohui Song<sup>1</sup>, Siliang Tang<sup>1</sup>, Jun X
 <sup>4</sup>The Hong Kong University of Science and Technology,
 <sup>5</sup>National University of Singapore
 
-<a href='https://arxiv.org/abs/2502.09838'><img src='https://img.shields.io/badge/Paper-Arxiv-red'> <a href='https://huggingface.co/lintw/HealthGPT-M3'><img src='https://img.shields.io/badge/Model-Huggingface-yellow'></a> <a href='https://llsuzy.github.io/HealthGPT.github.io/'><img src='https://img.shields.io/badge/Home-Page-green'>
+<a href='https://arxiv.org/abs/2502.09838'><img src='https://img.shields.io/badge/Paper-Arxiv-red'> <a href='https://huggingface.co/lintw/HealthGPT-M3'><img src='https://img.shields.io/badge/Model-Huggingface-yellow'></a> <a href='https://llsuzy.github.io/HealthGPT.github.io/'><img src='https://img.shields.io/badge/Home-Page-green'> 
 </div>
 
 
@@ -24,8 +24,7 @@ Welcome to **HealthGPT!** 🚀
 **HealthGPT** is an advanced medical Large Vision-Language Model with a unified framework that integrates both medical visual comprehension and generation capabilities. In this project, a **heterogeneous low rank adaptation (H-LoRA)** and a **three-stage learning strategy** are proposed, enabling the pre-trained large language model to efficiently follow both visual comprehension and generation instructions.
 
 # 🔥 News
-- Due to recent heavy workloads, we will upload the dataset and code as soon as possible.
-- [2025.02.17] We have released the pre-trained weight and inference code. 
+- **[2025.02.17]** We have released the pre-trained weight on HuggingFace and inference script. 
 ### TODO
 - [x] Release VL-Health dataset.
 - [x] Release training scripts.
