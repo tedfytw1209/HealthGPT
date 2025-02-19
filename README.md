@@ -28,8 +28,8 @@ Welcome to **HealthGPT!** 🚀
 ### TODO
 - [x] Release inference code.
 - [x] Release the pre-trained weight of the model.
-- [] Release VL-Health dataset.
-- [] Release training scripts.
+- [ ] Release VL-Health dataset.
+- [ ] Release training scripts.
 
 
 ### 📚 Task Classification and Support
