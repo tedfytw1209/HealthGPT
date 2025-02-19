@@ -26,10 +26,10 @@ Welcome to **HealthGPT!** 🚀
 # 🔥 News
 - **[2025.02.17]** We have released the pre-trained weight on HuggingFace and inference script. 
 ### TODO
-- [x] Release VL-Health dataset.
-- [x] Release training scripts.
-- [ ] Release inference code.
-- [ ] Release pre-trained weight of the model.
+- [x] Release inference code.
+- [x] Release the pre-trained weight of the model.
+- [] Release VL-Health dataset.
+- [] Release training scripts.
 
 
 ### 📚 Task Classification and Support
