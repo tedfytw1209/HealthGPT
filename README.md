@@ -30,7 +30,7 @@ Welcome to **HealthGPT!** 🚀
 - [x] Release the pre-trained weight of the model.
 - [ ] Release VL-Health dataset.
 - [ ] Release training scripts.
-
+- [ ] Construct the website.
 
 ### 📚 Task Classification and Support
 **HealthGPT** supports **7** types of medical comprehension tasks and **5** types of medical generation tasks, outperforming recent unified visual models and medical-specific models.
