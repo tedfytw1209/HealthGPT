@@ -17,6 +17,7 @@ Mengze Li<sup>4</sup>, Xiaohui Song<sup>1</sup>, Siliang Tang<sup>1</sup>, Jun X
 
 <a href='https://arxiv.org/abs/2502.09838'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a> 
 <a href='https://huggingface.co/lintw/HealthGPT-M3'><img src='https://img.shields.io/badge/Model-Huggingface-yellow'></a>
+<a href=''><img src='img.shields.io/badge/Dataset-Coming_Soon-E59FB6'></a>
 <a href='https://llsuzy.github.io/HealthGPT.github.io/'><img src='https://img.shields.io/badge/Home-Page-green'></a>
 <a href='https://www.youtube.com/watch?v=UtusB3L2msk'><img src='https://img.shields.io/badge/Overview-Video-blue'></a>
 </div>
