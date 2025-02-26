@@ -145,6 +145,7 @@ python3 com_infer_phi4.py \
     --hlora_path "path/to/your/local/com_hlora_weights_phi4.bin" \
     --question "Your question" \
     --img_path "path/to/image.jpg"
+
 ```
 The weights of `com_hlora_weights_phi4.bin` can be downloaded [here](https://huggingface.co/lintw/HealthGPT-L14).
 
