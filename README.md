@@ -15,7 +15,11 @@ Mengze Li<sup>4</sup>, Xiaohui Song<sup>1</sup>, Siliang Tang<sup>1</sup>, Jun X
 <sup>4</sup>The Hong Kong University of Science and Technology,
 <sup>5</sup>National University of Singapore
 
-<a href='https://arxiv.org/abs/2502.09838'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a> <a href='https://huggingface.co/lintw/HealthGPT-M3'><img src='https://img.shields.io/badge/Model-Huggingface-yellow'></a> <a href='https://llsuzy.github.io/HealthGPT.github.io/'><img src='https://img.shields.io/badge/Home-Page-green'></a> <a href='https://www.youtube.com/watch?v=UtusB3L2msk'><img src='https://img.shields.io/badge/Overview-Video-blue'></a>
+<a href='https://arxiv.org/abs/2502.09838'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a> 
+<a href='https://huggingface.co/lintw/HealthGPT-M3'><img src='https://img.shields.io/badge/Model-Huggingface-yellow'></a>
+<a href='https://huggingface.co/lintw/HealthGPT-M3'><img src='https://img.shields.io/badge/🤗%20Huggingface-Dataset-yellow'></a>
+<a href='https://llsuzy.github.io/HealthGPT.github.io/'><img src='https://img.shields.io/badge/Home-Page-green'></a>
+<a href='https://www.youtube.com/watch?v=UtusB3L2msk'><img src='https://img.shields.io/badge/Overview-Video-blue'></a>
 </div>
 
 
