@@ -15,7 +15,11 @@ Mengze Li<sup>4</sup>, Xiaohui Song<sup>1</sup>, Siliang Tang<sup>1</sup>, Jun X
 <sup>4</sup>The Hong Kong University of Science and Technology,
 <sup>5</sup>National University of Singapore
 
-<a href='https://arxiv.org/abs/2502.09838'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a> <a href='https://huggingface.co/lintw/HealthGPT-M3'><img src='https://img.shields.io/badge/Model-Huggingface-yellow'></a> <a href='https://llsuzy.github.io/HealthGPT.github.io/'><img src='https://img.shields.io/badge/Home-Page-green'></a> <a href='https://www.youtube.com/watch?v=UtusB3L2msk'><img src='https://img.shields.io/badge/Overview-Video-blue'></a>
+<a href='https://arxiv.org/abs/2502.09838'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a> 
+<a href='https://huggingface.co/lintw/HealthGPT-M3'><img src='https://img.shields.io/badge/Model-Huggingface-yellow'></a>
+<a href=''><img src='https://img.shields.io/badge/Dataset-Coming_Soon-E59FB6'></a>
+<a href='https://llsuzy.github.io/HealthGPT.github.io/'><img src='https://img.shields.io/badge/Home-Page-green'></a>
+<a href='https://www.youtube.com/watch?v=UtusB3L2msk'><img src='https://img.shields.io/badge/Overview-Video-blue'></a>
 </div>
 
 
@@ -24,10 +28,12 @@ Welcome to **HealthGPT!** 🚀
 **HealthGPT** is an advanced medical Large Vision-Language Model with a unified framework that integrates both medical visual comprehension and generation capabilities. In this project, a **heterogeneous low rank adaptation (H-LoRA)** and a **three-stage learning strategy** are proposed, enabling the pre-trained large language model to efficiently follow both visual comprehension and generation instructions.
 
 # 🔥 News
+- **[2025.02.26]** We have released the UI/UX for the inference.
 - **[2025.02.17]** We have released the pre-trained weight on HuggingFace and inference script. 
 ### TODO
 - [x] Release inference code.
 - [x] Release the pre-trained weight of the model.
+- [x] Release the inference UI/UX.
 - [ ] Release VL-Health dataset.
 - [ ] Release training scripts.
 - [ ] Construct the website.
@@ -169,6 +175,34 @@ python3 gen_infer.py \
     --save_path "path/to/save.jpg"
 
 ```
+
+## Server
+
+**An interactive Chat UI based on Gradio, supporting text + image input, and returning text or images according to different modes.**
+
+### 📌 Project Introduction
+This project is a **Gradio** front-end interface, supporting users:
+- **Analyze image (comprehension task)**: input text + image, output **text**
+- **Generate image (generation task)**: input text + image, output **image**
+
+### 📦 Installation Dependencies
+This project runs based on Python, and requires the installation of `Gradio` and `Pillow`.
+
+```bash
+pip install gradio pillow
+```
+
+### ▶️ Run the project
+Run the following command in the terminal:
+
+```bash
+python app.py
+```
+After running, the terminal will output the Gradio access address (such as http://127.0.0.1:5010), which can be opened in the browser for use.
+
+<p align="center">
+  <img src="images/chatUI.jpg" alt="Example Image" style="width:97%;">
+</p>
 
 
 ## 🔗 Citation
