@@ -1,3 +1,5 @@
+import traceback
+
 from model import HealthGPT, HealthGPT_Agent
 from config import HealthGPTConfig_M3_COM, HealthGPTConfig_M3_GEN, HealthGPTConfig_L14_COM
 
@@ -29,6 +31,7 @@ def process_input(option, model_name, text, image):
             resp = agent.process(option, text, image)
             return None, resp, gr.update(visible=False), gr.update(visible=True)
     except Exception as e:
+        print(traceback.format_exc())
         return gr.update(value=f"⚠️ {e.args[0]}", visible=True), None, gr.update(visible=True), gr.update(visible=False)
 
 

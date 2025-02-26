@@ -1,4 +1,5 @@
 import re
+import os
 import copy
 from dataclasses import dataclass, field
 import json
@@ -31,7 +32,7 @@ class HealthGPT:
         self._check_file_exists(args)
         self.model, self.tokenizer = self._load_model(args=args)
 
-    def _check_file_exists(self, args):
+    def _check_file_exists(self, config):
         model_name_or_path = getattr(config, "model_name_or_path", None)
         if not os.path.exists(model_name_or_path):
             raise FileNotFoundError(f"model_name_or_path: {model_name_or_path} does not exist")
@@ -75,7 +76,7 @@ class HealthGPT:
             use_fast=False,
         )
         num_new_tokens = add_special_tokens_and_resize_model(tokenizer, model, args.vq_idx_nums)
-        print(f"Number of new tokens added for unified task: {num_new_tokens}")
+        # print(f"Number of new tokens added for unified task: {num_new_tokens}")
 
         if args.task_type == "comprehension":
             from llava.demo.utils import com_vision_args
@@ -160,7 +161,7 @@ class HealthGPT:
                 use_cache=True)
 
         response = [int(idx) for idx in re.findall(r'\d+', self.tokenizer.decode(output_ids[0])[:-8])]
-        print("response: ",len(response), response)
+        # print("response: ",len(response), response)
         from taming_transformers.idx2img import idx2img
         idx2img(torch.tensor(response).cuda(), self.args.save_path)
         image = Image.open(self.args.save_path).convert('RGB')
