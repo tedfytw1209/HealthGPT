@@ -1,8 +1,9 @@
 #!/bin/bash
-
+QUESTION = $1
+IMAGE_PATH = $2
 MODEL_NAME_OR_PATH="microsoft/Phi-4"
 VIT_PATH="openai/clip-vit-large-patch14-336/"
-HLORA_PATH="com_hlora_weights_phi4.bin"
+HLORA_PATH="/orange/chenaokun1990/tienyu/HealthGPT_pretrain/com_hlora_weights_phi4.bin"
 
 python3 com_infer_phi4.py \
     --model_name_or_path "$MODEL_NAME_OR_PATH" \
@@ -14,5 +15,5 @@ python3 com_infer_phi4.py \
     --instruct_template "phi4_instruct" \
     --vit_path "$VIT_PATH" \
     --hlora_path "$HLORA_PATH" \
-    --question "Your question" \
-    --img_path "path/to/image.jpg"
+    --question "$QUESTION" \
+    --img_path "$IMAGE_PATH"
