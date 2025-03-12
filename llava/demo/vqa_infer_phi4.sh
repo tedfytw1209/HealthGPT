@@ -3,12 +3,17 @@
 # This script is used to infer the image with the model Phi-4.
 QUESTION_FILE=${1:-"./playground/data/eval/iu_xray/simple_questions.jsonl"}
 IMAGE_DIR=${2:-"/orange/bianjiang/VLM_dataset/ReportGeneration/IU_X-Ray/Kaggle/images/images_normalized"}
-ANSWER_FILE=${3:-"/eval_output/finetune/lc_ct/simple_answers.jsonl"}
+ANSWER_FILE=${3:-"./eval_output/finetune/lc_ct/simple_answers.jsonl"}
 METADATA=${4:-"None"}
 BS=${5:-"1"}
 MODEL_NAME_OR_PATH="/orange/chenaokun1990/tienyu/huggingface/hub/models--microsoft--phi-4/snapshots/187ef0342fff0eb3333be9f00389385e95ef0b61/"
 VIT_PATH="/orange/chenaokun1990/tienyu/huggingface/hub/models--openai--clip-vit-large-patch14-336/snapshots/ce19dc912ca5cd21c8a653c79e251e808ccabcd1/"
 HLORA_PATH="/orange/chenaokun1990/tienyu/HealthGPT_pretrain/com_hlora_weights_phi4.bin"
+
+echo "$MODEL_PATH $CKPT"
+
+module load conda
+conda activate HealthGPT
 
 python3 llava/demo/vqa_infer_phi4.py \
     --model_name_or_path "$MODEL_NAME_OR_PATH" \
