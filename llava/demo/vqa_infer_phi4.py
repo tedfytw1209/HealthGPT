@@ -428,7 +428,9 @@ def infer():
             
             #image_tensor = image_processor.preprocess(image, return_tensors='pt')['pixel_values'][0]
             images = [expand2square(image, tuple(int(x*255) for x in model.get_vision_tower().image_processor.image_mean)) for image in images]
-            image_tensor = model.get_vision_tower().image_processor.preprocess(images, return_tensors='pt')['pixel_values'][0].unsqueeze_(0)
+            print('After expand2square:',images[0].size)
+            image_tensor = model.get_vision_tower().image_processor.preprocess(images, return_tensors='pt')['pixel_values'][0]
+            print('After preprocess:',image_tensor.shape)
             
             if not use_conv:
                 ## load qs and save gt
@@ -472,9 +474,7 @@ def infer():
                 #concat with image (add multi image case)
                 cur_prompt = qs
                 for im_i in range(image_num):
-                    if model.config.mm_use_im_start_end:
-                        qs = DEFAULT_IM_START_TOKEN + DEFAULT_IMAGE_TOKEN + DEFAULT_IM_END_TOKEN + '\n' + qs
-                    elif use_nii:
+                    if use_nii:
                         qs = '%d : '%(step_ids[im_i]) + DEFAULT_IMAGE_TOKEN + '\n' + qs
                     else:
                         qs = DEFAULT_IMAGE_TOKEN + '\n' + qs
@@ -542,6 +542,7 @@ def infer():
         #batch part
         input_ids_tensor = torch.cat(input_ids_list)
         image_tensors = torch.cat(image_tensor_list)
+        print('input_ids_tensor & image_tensors:',input_ids_tensor.shape,image_tensors.shape)
 
         with torch.inference_mode():
             output_ids_list = model.generate(
