@@ -516,7 +516,7 @@ def infer():
                     conv.append_message(new_role, question)
                 conv.append_message(conv.roles[1], None) #add answer
                 all_images = [expand2square(image, tuple(int(x*255) for x in model.get_vision_tower().image_processor.image_mean)) for image in all_images]
-                image_tensor = model.get_vision_tower().image_processor.preprocess(all_images, return_tensors='pt')['pixel_values']
+                image_tensor = model.get_vision_tower().image_processor.preprocess(all_images, return_tensors='pt')['pixel_values'][0].unsqueeze_(0)
                 #gt save
                 gt_dict = {
                         "question_id": idx,
@@ -545,16 +545,16 @@ def infer():
         print('input_ids_tensor & image_tensors:',input_ids_tensor.shape,image_tensors.shape)
 
         with torch.inference_mode():
-            output_ids_list = model.generate(
+            output_ids_list = model.base_model.model.generate(
                 input_ids_tensor,
-                images=[image_tensors.to(dtype=model_dtype, device='cuda', non_blocking=True)],
-                do_sample=True if args.temperature > 0 else False,
+                images=image_tensors.to(dtype=model_dtype, device='cuda', non_blocking=True),
+                image_sizes=image_tensors.shape[1:],
+                do_sample=args.do_sample,
                 temperature=args.temperature,
                 top_p=args.top_p,
                 num_beams=args.num_beams,
                 # no_repeat_ngram_size=3,
                 max_new_tokens=args.max_new_tokens,
-                pad_token_id=tokenizer.eos_token_id,
                 use_cache=True,
             )
 
