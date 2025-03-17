@@ -399,6 +399,7 @@ def infer():
         image_tensor_list = []
         prompt_list = []
         input_ids_list = []
+        img_shape_list = []
         for line in batch:
             i += 1
             if 'question_id' in question_keys:
@@ -429,7 +430,7 @@ def infer():
             #image_tensor = image_processor.preprocess(image, return_tensors='pt')['pixel_values'][0]
             images = [expand2square(image, tuple(int(x*255) for x in model.get_vision_tower().image_processor.image_mean)) for image in images]
             print('After expand2square:',images[0].size)
-            image_tensor = model.get_vision_tower().image_processor.preprocess(images, return_tensors='pt')['pixel_values'][0]
+            image_tensor = model.get_vision_tower().image_processor.preprocess(images, return_tensors='pt')['pixel_values'][0].unsqueeze_(0)
             print('After preprocess:',image_tensor.shape)
             
             if not use_conv:
@@ -532,6 +533,7 @@ def infer():
 
             #store to list
             idx_list.append(idx)
+            img_shape_list.append([image.size for image in images])
             image_tensor_list.append(image_tensor)
             prompt_list.append(cur_prompt)
             input_ids_list.append(input_ids)
@@ -543,12 +545,13 @@ def infer():
         input_ids_tensor = torch.cat(input_ids_list)
         image_tensors = torch.cat(image_tensor_list)
         print('input_ids_tensor & image_tensors:',input_ids_tensor.shape,image_tensors.shape)
+        print('img_shape_list:',img_shape_list)
 
         with torch.inference_mode():
             output_ids_list = model.base_model.model.generate(
                 input_ids_tensor,
                 images=image_tensors.to(dtype=model_dtype, device='cuda', non_blocking=True),
-                image_sizes=image_tensors.shape[1:],
+                image_sizes=img_shape_list[0][0] if len(img_shape_list)>0 else None,
                 do_sample=args.do_sample,
                 temperature=args.temperature,
                 top_p=args.top_p,
