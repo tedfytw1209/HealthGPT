@@ -21,14 +21,22 @@ def process_input(option, model_name, text, image):
     try:
         if option == "Analyze Image":
             model_name = model_name + "-COM"
-            agent.load_model(model_name=model_name)
-            resp = agent.process(option, text, image)
+            try:
+                agent.load_model(model_name=model_name)
+                resp = agent.process(option, text, image)
+            except Exception as e:
+                agent.load_model(model_name=model_name)
+                resp = agent.process(option, text, image)
             return resp, None, gr.update(visible=True), gr.update(visible=False)
 
         elif option == "Generate Image":
             model_name = model_name + "-GEN"
-            agent.load_model(model_name=model_name)
-            resp = agent.process(option, text, image)
+            try:
+                agent.load_model(model_name=model_name)
+                resp = agent.process(option, text, image)
+            except Exception as e:
+                agent.load_model(model_name=model_name)
+                resp = agent.process(option, text, image)
             return None, resp, gr.update(visible=False), gr.update(visible=True)
     except Exception as e:
         print(traceback.format_exc())
