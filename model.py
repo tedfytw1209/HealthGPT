@@ -101,12 +101,15 @@ class HealthGPT:
         return model, tokenizer
 
     def reset(self):
-        if self.model is not None:
-            del self.model
-        if self.tokenizer is not None:
-            del self.tokenizer
+        if getattr(self, "model", None) is not None:
+            if self.model is not None:
+                del self.model
+        if getattr(self, "tokenizer", None) is not None:
+            if self.tokenizer is not None:
+                del self.tokenizer
 
     def infer(self, question, image):
+        print(f"question: {question}, image: {image is not None}")
         if image:
             qs = DEFAULT_IMAGE_TOKEN + '\n' + question
         else:
@@ -180,19 +183,19 @@ class HealthGPT_Agent:
     def load_model(self, model_name):
         print(f"Previous agent: {self.model_name}, Current agent: {model_name}")
         if self.model_name == model_name:
-            return
-        else:
-            if self.agent:
-                self.agent.reset()
-            print(f"load model: {model_name}")
-            if model_name == "HealthGPT-L14-GEN":
-                raise ValueError(f"Do not support generation task for HealthGPT-L14.")
+            if getattr(self.agent, "model", None) is not None and getattr(self.agent.model, "tokenizer", None) is not None:
+                return
+        if self.agent:
+            self.agent.reset()
+        print(f"load model: {model_name}")
+        if model_name == "HealthGPT-L14-GEN":
+            raise ValueError(f"Do not support generation task for HealthGPT-L14.")
 
-            model_config = self.configs.get(model_name, None)
-            if model_config is None:
-                raise ValueError(f"Invalid model type: {model_name}")
-            self.agent = HealthGPT(model_config)
-            self.model_name = model_name
+        model_config = self.configs.get(model_name, None)
+        if model_config is None:
+            raise ValueError(f"Invalid model type: {model_name}")
+        self.agent = HealthGPT(model_config)
+        self.model_name = model_name
 
     def process(self, option, question, image):
         if option == "Analyze Image":
