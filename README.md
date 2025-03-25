@@ -17,7 +17,7 @@ Mengze Li<sup>4</sup>, Xiaohui Song<sup>1</sup>, Siliang Tang<sup>1</sup>, Jun X
 
 <a href='https://arxiv.org/abs/2502.09838'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a> 
 <a href='https://huggingface.co/lintw/HealthGPT-M3'><img src='https://img.shields.io/badge/Model-Huggingface-yellow'></a>
-<a href=''><img src='https://img.shields.io/badge/Dataset-Coming_Soon-E59FB6'></a>
+<a href='https://huggingface.co/datasets/lintw/VL-Health'><img src='https://img.shields.io/badge/Dataset-Huggingface-E59FB6'></a>
 <a href='https://llsuzy.github.io/HealthGPT.github.io/'><img src='https://img.shields.io/badge/Home-Page-green'></a>
 <a href='https://www.youtube.com/watch?v=UtusB3L2msk'><img src='https://img.shields.io/badge/Overview-Video-blue'></a>
 </div>
@@ -28,13 +28,15 @@ Welcome to **HealthGPT!** 🚀
 **HealthGPT** is an advanced medical Large Vision-Language Model with a unified framework that integrates both medical visual comprehension and generation capabilities. In this project, a **heterogeneous low rank adaptation (H-LoRA)** and a **three-stage learning strategy** are proposed, enabling the pre-trained large language model to efficiently follow both visual comprehension and generation instructions.
 
 # 🔥 News
+- **[2025.03.20]** We upgraded our specialized comprehension model, [**HealthGPT-XL32**](https://huggingface.co/lintw/HealthGPT-XL32), which is based on Qwen2.5-32B-Instruct. **This enhanced model significantly outperforms HealthGPT-L14, with a score of 70.4 compared to 66.4**.
+- **[2025.03.06]** We have released the VL-Health Dataset.
 - **[2025.02.26]** We have released the UI/UX for the inference.
-- **[2025.02.17]** We have released the pre-trained weight on HuggingFace and inference script. 
+- **[2025.02.17]** We have released the pre-trained weight on HuggingFace and inference script.
 ### TODO
 - [x] Release inference code.
 - [x] Release the pre-trained weight of the model.
 - [x] Release the inference UI/UX.
-- [ ] Release VL-Health dataset.
+- [x] Release VL-Health dataset.
 - [ ] Release training scripts.
 - [ ] Construct the website.
 
@@ -147,6 +149,7 @@ python3 com_infer_phi4.py \
     --hlora_path "path/to/your/local/com_hlora_weights_phi4.bin" \
     --question "Your question" \
     --img_path "path/to/image.jpg"
+
 ```
 The weights of `com_hlora_weights_phi4.bin` can be downloaded [here](https://huggingface.co/lintw/HealthGPT-L14).
 
